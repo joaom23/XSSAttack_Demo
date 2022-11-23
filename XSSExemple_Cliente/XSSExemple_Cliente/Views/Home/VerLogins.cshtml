@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Página protegida";
+}
+
+@using XSSExemple_Cliente.Models
+@model List<Login>
+
+
+<h1>Logins</h1>
+
+<table class="table table-bordered">
+    <thead>
+     <tr>
+        <th>
+            Username
+        </th>
+        <th>
+            Password
+        </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>

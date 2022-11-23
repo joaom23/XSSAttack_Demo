@@ -1,0 +1,43 @@
+﻿@model XSSExemple_Cliente.Models.Login
+
+@{
+    ViewData["Title"] = "Login";
+}
+<h1>Login</h1>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-@ViewBag.Type alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        @ViewBag.Message
+    </div>
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                @*<input asp-for="Username" class="form-control" value="@Html.Raw(ViewBag.teste)"/>*@
+                <input id="Username" class="form-control" value="@Html.Raw(ViewBag.Username)" name="Username"/>
+                <input type="hidden" value="" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input id="LoginButton" type="submit" value="Login" class="btn btn-primary" href="#0" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

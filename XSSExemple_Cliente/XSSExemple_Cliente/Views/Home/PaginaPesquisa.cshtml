@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Pesquisa";
+}
+
+<h1>Pesquisa</h1>
+
+@if (ViewBag.palavra != null)
+{
+    <p>Nao foi possivel encontrar o item: @Html.Raw(ViewBag.palavra)</p>
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Pesquisa" asp-route-palavra="@ViewBag.palavra">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Pesquisar</label>
+                <input class="form-control" name="palavra" value="@ViewBag.palavra" />
+            </div>
+            <div class="form-group">
+                <input id="LoginButton" type="submit" value="Pesquisar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
